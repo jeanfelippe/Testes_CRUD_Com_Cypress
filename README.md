@@ -16,7 +16,8 @@ IDE UTILIZADA VSCODE
 # Comando para instalação do framework cypress
 npm install cypress -D
 
-
+# Comando para executar o framework cypress
+npx cypress open
 
 
 
