@@ -1,5 +1,15 @@
 {
+  "name": "testes_crud_com_cypress",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
   "devDependencies": {
-    "@types/cypress": "^1.1.3"
+    "cypress": "^13.7.2"
   }
 }
