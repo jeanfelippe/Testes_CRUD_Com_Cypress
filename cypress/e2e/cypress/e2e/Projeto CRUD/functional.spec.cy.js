@@ -15,10 +15,16 @@ describe('Projeto Cypress',()=> {
     cy.get('[href="/contas"]').click()
     cy.get('[data-test="nome"]').type('conta teste2')
     cy.get('.btn').click()
-
-  
   })
 
+  it.only('Alterar uma conta',()=>{
+    cy.get('[data-test="menu-settings"]').click()
+    cy.get('[href="/contas"]').click()
+    cy.get(':nth-child(3) > :nth-child(2) > :nth-child(1) > .far').click()
+    cy.get('[data-test="nome"]').clear().type('11')
+    cy.get('.btn > .far').click()
+
+  })
 
 
 
