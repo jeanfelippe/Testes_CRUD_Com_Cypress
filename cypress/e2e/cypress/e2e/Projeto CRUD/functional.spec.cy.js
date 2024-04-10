@@ -5,10 +5,17 @@ import loc from '../../support/locators'
 describe('Projeto Cypress',()=> {
 
   before(()=>{
+
+    
+
       cy.visit('https://barrigareact.wcaquino.me/')
       cy.get(loc.LOGIN.USER).type('jeanfelippe500@gmail.com')
       cy.get(loc.LOGIN.PASSWORD).type('123')
       cy.get(loc.LOGIN.BTN_LOGIN).click()
+
+      //reset
+      cy.get(loc.MENU.SETTINGS).click()
+      cy.get(loc.MENU.RESET).click()
       //cy.get('[data-test=email]').type('jeanfelippe500@gmail.com')
       //cy.get('[data-test=passwd]').type('123')
       //cy.get('.btn').click()
