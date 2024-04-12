@@ -12,7 +12,13 @@ const locators={
     CONTAS:{
         NOME:'[data-test="nome"]',
         BTN_SALVAR: '.btn'
-    }
+    },
+    MOVIMENTACAO:{
+        DESCRICAO: '[data-test="descricao"]',
+        VALOR:'[data-test="valor"]',
+        INTERESSADO:'[data-test="envolvido"]',
+        BTN_SALVAR:'.btn-primary'
+    }   
 }
 
 export default locators;

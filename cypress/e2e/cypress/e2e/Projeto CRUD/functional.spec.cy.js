@@ -4,7 +4,7 @@ import loc from '../../support/locators'
 
 describe('Projeto Cypress',()=> {
 
-  before(()=>{
+  beforeEach(()=>{
 
     
 
@@ -33,13 +33,22 @@ describe('Projeto Cypress',()=> {
     //cy.get('.btn').click()
   })
 
-  it.only('Alterar uma conta',()=>{
-    cy.get('[data-test="menu-settings"]').click()
-    cy.get('[href="/contas"]').click()
+  it('Alterar uma conta',()=>{
+    cy.get(loc.MENU.SETTINGS).click()
+    cy.get(loc.MENU.CONTAS).click()
     cy.get(':nth-child(3) > :nth-child(2) > :nth-child(1) > .far').click()
     cy.get('[data-test="nome"]').clear().type('12')
     cy.get('.btn > .far').click()
 
+  })
+
+
+  it('Cadastrar movimentacao',()=>{
+    cy.get('[data-test="menu-movimentacao"] > .fas').click()
+    cy.get(loc.MOVIMENTACAO.DESCRICAO).type('dados movimentados')
+    cy.get(loc.MOVIMENTACAO.VALOR).type('20')
+    cy.get(loc.MOVIMENTACAO.INTERESSADO).type('20')
+    cy.get(loc.MOVIMENTACAO.BTN_SALVAR).click()
   })
 
 
