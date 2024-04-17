@@ -48,7 +48,15 @@ describe('Projeto Cypress',()=> {
     cy.get(loc.MOVIMENTACAO.DESCRICAO).type('dados movimentados')
     cy.get(loc.MOVIMENTACAO.VALOR).type('20')
     cy.get(loc.MOVIMENTACAO.INTERESSADO).type('20')
+    cy.get(loc.MOVIMENTACAO.STATUS).click()
     cy.get(loc.MOVIMENTACAO.BTN_SALVAR).click()
+  })
+
+
+  it('Excluir Saldo',()=>{
+    cy.get(loc.MENU.EXTRATO).click()
+    //cy.get('[data-test="menu-extrato"] > .fas').click()
+    cy.get(':nth-child(1) > .row > .col > [href="#"] > .far').click()
   })
 
 
