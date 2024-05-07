@@ -6,6 +6,25 @@ describe('Projeto Cypress API',()=> {
 
   beforeEach(()=>{
 
+        //Me autentiquei novamente para pegar o token e acessar/requisitar reset, sendo assim, antes de qualquer ação, será realizado reset dos dados que inseri anteriormente
+        cy.request({
+          method:'POST',
+          url: 'https://barrigarest.wcaquino.me/signin',
+          body:{
+            email:"jeanfelippe500@gmail.com",
+            redirecionar:false,
+            senha:"123"
+          }
+        }).its('body.token').should('not.be.empty')
+        .then(token=>{
+        cy.request({
+          url: 'https://barrigarest.wcaquino.me/reset',
+          method:'GET',
+          headers: { Authorization: `JWT ${token}`}
+        }).its('status').should('be.equal',200)
+    
+        })
+
   })
 
   it('Criar uma conta',()=>{
@@ -25,9 +44,9 @@ describe('Projeto Cypress API',()=> {
         method:'POST',
         headers: { Authorization: `JWT ${token}`},
         body:{
-          nome: 'Contas123 via rest do Jean12345'
+          nome: 'Contaaaaaxxs123 via rest do Jean12345'
         }
-      //}).then(res=>console.log(res))
+      //Conseguirei cadastrar uma conta com esse nome toda vez que entrar sem problemas de nome já existente, por conta do reset localizado no BeforeEach que limpará a base toda vez que  requisitar login
 
 
     }).as('response')
@@ -35,8 +54,15 @@ describe('Projeto Cypress API',()=> {
   cy.get('@response').then(res=>{
     expect(res.status).to.be.equal(201)
     expect(res.body).to.have.property('id')
-    expect(res.body).to.have.property('nome','Contas123 via rest do Jean12345')
+    expect(res.body).to.have.property('nome','Contaaaaaxxs123 via rest do Jean12345')
   })
+
+
+  
+
+
+
+  
 })
 
 
