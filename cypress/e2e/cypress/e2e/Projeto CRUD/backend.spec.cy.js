@@ -63,14 +63,44 @@ describe('Projeto Cypress API',()=> {
 
 
   
-})
+})  
 
 
   it('Alterar uma conta',()=>{
 
+    cy.request({
+      method:'POST',
+      url: 'https://barrigarest.wcaquino.me/signin',
+      body:{
+        email:"jeanfelippe500@gmail.com",
+        redirecionar:false,
+        senha:"123"
+      }
+    }).its('body.token').should('not.be.empty')
+    .then(token=>{
+
+    cy.request({
+        method:'GET',
+        url: 'https://barrigarest.wcaquino.me/contas',
+        headers: { Authorization: `JWT ${token}`},
+        qs:{
+          nome: 'Conta para alterar'
+        }
+      }).then(res=>{
+        cy.request({
+          url: `https://barrigarest.wcaquino.me/contas/${res.body[0].id}`,
+          method:'PUT',
+          headers: { Authorization: `JWT ${token}`},
+          body:{
+            nome: 'Conta alterada com sucessoo'
+      }
+    }).as('response')
+
 
   })
 
+  })
+  })
 
   it('Cadastrar movimentacao',()=>{
 
