@@ -102,15 +102,7 @@ describe('Projeto Cypress API',()=> {
   })
   })
 
-  it('Cadastrar movimentacao',()=>{
-
-  })
-
-
-  it('Excluir Saldo',()=>{
-
-  })
-
+ 
 
 
 })
